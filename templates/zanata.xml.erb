@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<config xmlns="http://zanata.org/namespace/config/">
+  <url><%= @zanata_url %>/</url>
+  <project>horizon</project>
+  <project-version><%= @project_version %></project-version>
+  <project-type>gettext</project-type>
+  <src-dir>.</src-dir>
+  <trans-dir>/opt/stack/horizon/</trans-dir>
+  <excludes>.*/**</excludes>
+  <rules>
+    <rule pattern="./horizon/locale/*.pot">horizon/locale/{locale_with_underscore}/LC_MESSAGES/{filename}.po</rule>
+    <rule pattern="./openstack_dashboard/locale/*.pot">openstack_dashboard/locale/{locale_with_underscore}/LC_MESSAGES/{filename}.po</rule>
+  </rules>
+</config>
