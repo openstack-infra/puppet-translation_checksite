@@ -1,0 +1,21 @@
+{
+  "name": "openstackinfra-translation_checksite",
+  "version": "0.0.1",
+  "author": "Openstack CI",
+  "summary": "Puppet module for translation checksite",
+  "license": "Apache 2.0",
+  "source": "git://git.openstack.org/openstack-infra/puppet-translation_checksite.git",
+  "project_page": "http://docs.openstack.org/infra/system-config/",
+  "issues_url": "https://storyboard.openstack.org/#!/project/839",
+  "operatingsystem_support": [
+    { "operatingsystem": "Ubuntu", "operatingsystemrelease": ["14.04"] }
+  ],
+  "requirements": [
+    { "name": "pe", "version_requirement": ">= 3.2.0 < 3.4.0" },
+    { "name": "puppet", "version_requirement": "3.x" }
+  ],
+
+  "dependencies": [
+    { "name": "openstackinfra/vcsrepo", "version_requirement": "= 0.0.8" }
+  ]
+}
