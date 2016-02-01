@@ -1,0 +1,117 @@
+[[local|localrc]]
+#-----------------------------
+# Common congigurations
+#-----------------------------
+
+
+USE_NEUTRON=True
+
+#disable_service mysql
+#enable_service postgresql
+
+#disable_service cinder c-sch c-api c-vol
+enable_service c-bak
+disable_service tempest
+#disable_service horizon
+enable_service heat h-api h-api-cfn h-api-cw h-eng
+enable_service ceilometer-acompute ceilometer-acentral ceilometer-collector ceilometer-api
+enable_service s-proxy s-object s-container s-account
+enable_service trove tr-api tr-tmgr tr-cond
+enable_service sahara
+#enable_service zaqar-server
+
+# enable_plugin manila https://github.com/openstack/manila
+
+enable_plugin rally https://git.openstack.org/openstack/rally
+
+enable_plugin murano https://git.openstack.org/openstack/murano
+enable_plugin murano-dashboard https://git.openstack.org/openstack/murano-dashboard
+
+enable_plugin trove https://git.openstack.org/openstack/trove
+enable_plugin trove-dashboard https://git.openstack.org/openstack/trove-dashboard
+
+enable_plugin sahara https://git.openstack.org/openstack/sahara
+enable_plugin sahara-dashboard https://git.openstack.org/openstack/sahara-dashboard
+
+enable_plugin neutron https://git.openstack.org/openstack/neutron
+enable_plugin neutron-lbaas https://git.openstack.org/openstack/neutron-lbaas
+enable_plugin octavia  https://git.openstack.org/openstack/octavia
+enable_plugin neutron-lbaas-dashboard https://git.openstack.org/openstack/neutron-lbaas-dashboard
+enable_plugin neutron-vpnaas https://git.openstack.org/openstack/neutron-vpnaas
+
+ENABLED_SERVICES+=,q-lbaasv2
+ENABLED_SERVICES+=,octavia,o-cw,o-hk,o-hm,o-api
+
+# Enable the aodh alarming services
+# enable_plugin aodh https://git.openstack.org/openstack/aodh
+# enable_service aodh-evaluator,aodh-notifier,aodh-api
+# disable_service ceilometer-alarm-notifier,ceilometer-alarm-evaluator
+
+enable_plugin app-catalog-ui https://github.com/openstack/app-catalog-ui
+
+LIBS_FROM_GIT=django_openstack_auth
+
+#CEILOMETER_BACKEND=mongo
+VOLUME_BACKING_FILE_SIZE=50G
+
+#IDENTITY_API_VERSION=3
+KEYSTONE_TOKEN_FORMAT=UUID
+PRIVATE_NETWORK_NAME=net1
+PUBLIC_NETWORK_NAME=ext_net
+
+# For VPNaaS
+#FIXED_RANGE=10.2.0.0/24
+#FIXED_NETWORK_SIZE=256
+#NETWORK_GATEWAY=10.2.0.1
+#PUBLIC_NETWORK_GATEWAY=172.24.4.232
+#Q_FLOATING_ALLOCATION_POOL=start=172.24.4.233,end=172.24.4.238
+
+#-----------------------------
+# Neutron
+#-----------------------------
+# If you use nova-network comment out the following lines.
+if [[ "$USE_NEUTRON" == "True" ]]; then
+  disable_service n-net
+  enable_service neutron q-svc q-agt
+  enable_service q-dhcp
+  enable_service q-l3
+  enable_service q-meta
+  enable_service q-fwaas
+  enable_service q-metering
+
+  Q_PLUGIN=ml2
+
+#-----------------------------
+# nova-network
+#-----------------------------
+else
+  :
+  # When multi node two NIC machine is recommended since FLAT_INTERFACE
+  # is added to a bridge and IP address is moved to the bridge.
+  # By using another NIC we can avoid unnecessary troubles.
+  #FLAT_INTERFACE=eth1
+  #PUBLIC_INTERFACE=eth0
+fi
+
+#-----------------------------
+# Devstack configurations
+#-----------------------------
+LOGDIR=$DEST/logs
+SCREEN_LOGDIR=$LOGDIR
+SCREEN_HARDSTATUS="%{= rw} %H %{= wk} %L=%-w%{= bw}%30L> %n%f %t*%{= wk}%+Lw%-17< %-=%{= gk} %y/%m    /%d %c"
+LOGFILE=$LOGDIR/devstack.log
+#LOG_COLOR=False
+
+
+ADMIN_PASSWORD=<%= @admin_password %>
+MYSQL_PASSWORD=<%= @database_password %>
+RABBIT_PASSWORD=<%= @rabbit_password %>
+SERVICE_PASSWORD=<%= @service_password %>
+SERVICE_TOKEN=<%= @service_token %>
+SWIFT_HASH=<%= @swift_hash %>
+
+#OFFLINE=True
+RECLONE=True
+[[post-config|/etc/cinder/cinder.conf]]
+[DEFAULT]
+quota_gigabytes=10000
