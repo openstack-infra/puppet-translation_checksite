@@ -32,7 +32,7 @@
 # needs sudo rights without password
 #
 # [*revision*]
-# used branch (check https://git.opentsack.org/openstack-dev/devstack.git 
+# used branch (check https://git.opentsack.org/openstack-dev/devstack.git
 # for available branches )
 #
 # [*project_version*]
@@ -49,7 +49,7 @@
 #
 # [*service_password*]
 # Password of services
-# 
+#
 # [*service_token*]
 # Password of service token
 #
@@ -64,7 +64,7 @@
 # Shutdown and delete DevStack
 #
 # [*restack*]
-# daily cron to unstack and stack 
+# daily cron to unstack and stack
 #
 # [*restack_hour*]
 # [*restack_minute*]
@@ -131,7 +131,7 @@ class translation_checksite (
       require => [ Vcsrepo["${devstack_dir}"] ],
     }
   }
-  
+
   exec { "run_devstack":
     cwd       => $devstack_dir,
     command   => "/bin/su ${stack_user} -c ${devstack_dir}/stack.sh &",
