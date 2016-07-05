@@ -164,7 +164,7 @@ class translation_checksite (
     command   => "/bin/su ${stack_user} -c ${devstack_dir}/stack.sh",
     unless    => ['/bin/ps aux | /usr/bin/pgrep stack 2>/dev/null',
                   '/usr/bin/test -d /opt/stack/'],
-    timeout   => 3600,
+    timeout   => 7200,
     require   => File["${devstack_dir}/local.conf"],
     logoutput => true
   }
