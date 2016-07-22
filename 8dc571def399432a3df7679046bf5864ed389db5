@@ -1,0 +1,9 @@
+Code-Review+2: Clark Boylan <cboylan@sapwetik.org>
+Code-Review+2: Colleen Murphy <colleen@gazlene.net>
+Workflow+1: Colleen Murphy <colleen@gazlene.net>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Fri, 22 Jul 2016 19:36:15 +0000
+Reviewed-on: https://review.openstack.org/337912
+Project: openstack-infra/puppet-translation_checksite
+Branch: refs/heads/master
