@@ -1,0 +1,8 @@
+Code-Review+2: Ian Wienand <iwienand@redhat.com>
+Workflow+1: Colleen Murphy <colleen@gazlene.net>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Tue, 01 Aug 2017 13:56:18 +0000
+Reviewed-on: https://review.openstack.org/477153
+Project: openstack-infra/puppet-translation_checksite
+Branch: refs/heads/master
