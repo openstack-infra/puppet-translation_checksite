@@ -1,4 +1,4 @@
-HOSTS:
+HOSTS: 
   ubuntu-16.04-amd64:
     roles:
       - master
