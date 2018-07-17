@@ -1,0 +1,8 @@
+Code-Review+2: Clark Boylan <cboylan@sapwetik.org>
+Workflow+1: Clark Boylan <cboylan@sapwetik.org>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Tue, 17 Jul 2018 08:38:27 +0000
+Reviewed-on: https://review.openstack.org/582071
+Project: openstack-infra/puppet-translation_checksite
+Branch: refs/heads/master
