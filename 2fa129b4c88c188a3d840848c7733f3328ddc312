@@ -1,0 +1,8 @@
+Code-Review+2: Jeremy Stanley <fungi@yuggoth.org>
+Workflow+1: Jeremy Stanley <fungi@yuggoth.org>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Tue, 26 Mar 2019 14:14:06 +0000
+Reviewed-on: https://review.openstack.org/647008
+Project: openstack-infra/puppet-translation_checksite
+Branch: refs/heads/master
